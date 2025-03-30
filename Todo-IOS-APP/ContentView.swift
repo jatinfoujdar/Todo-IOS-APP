@@ -1,13 +1,9 @@
-//
-//  ContentView.swift
-//  Todo-IOS-APP
-//
-//  Created by jatin foujdar on 30/03/25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var todos: [Todo] = []
+    @State private var newString = ""
+    
     var body: some View {
         NavigationView {
                   VStack {
@@ -21,7 +17,7 @@ struct ContentView: View {
                                   
                                   // Edit icon
                                   Button(action: {
-                                      // Edit action (UI only)
+                                    
                                   }) {
                                       Image(systemName: "pencil")
                                           .foregroundColor(.blue)
@@ -29,7 +25,7 @@ struct ContentView: View {
                                   
                                   // Delete icon
                                   Button(action: {
-                                      // Delete action (UI only)
+                                  
                                   }) {
                                       Image(systemName: "trash")
                                           .foregroundColor(.red)
@@ -39,7 +35,7 @@ struct ContentView: View {
                       }
                       .listStyle(PlainListStyle())
                       
-                      // New task input section (static UI)
+                      
                       HStack {
                           TextField("New Task", text: .constant(""))
                               .textFieldStyle(RoundedBorderTextFieldStyle())

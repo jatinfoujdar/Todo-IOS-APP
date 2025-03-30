@@ -6,38 +6,38 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-                  VStack {
-                      // List of tasks (static UI)
-                      List {
-                          ForEach(0..<5) { index in
-                              HStack {
-                                  Text("Task \(index + 1)")
-                                      .font(.body)
-                                  Spacer()
-                                  
-                                  // Edit icon
-                                  Button(action: {
-                                    
-                                  }) {
-                                      Image(systemName: "pencil")
-                                          .foregroundColor(.blue)
-                                  }
-                                  
-                                  // Delete icon
-                                  Button(action: {
-                                  
-                                  }) {
-                                      Image(systemName: "trash")
-                                          .foregroundColor(.red)
-                                  }
-                              }
-                          }
-                      }
+            VStack {
+                // List of tasks (static UI)
+                List {
+                    ForEach(todos) { todo in
+                        HStack {
+                            Text(todo.title)
+                                .font(.body)
+                            Spacer()
+                            
+                            // Edit icon
+                            Button(action: {
+                                
+                            }) {
+                                Image(systemName: "pencil")
+                                    .foregroundColor(.blue)
+                            }
+                            
+                            // Delete icon
+                            Button(action: {
+                                
+                            }) {
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                            }
+                        }
+                    }
+                }
                       .listStyle(PlainListStyle())
                       
                       
                       HStack {
-                          TextField("New Task", text: .constant(""))
+                          TextField("New Task", text: $newString)
                               .textFieldStyle(RoundedBorderTextFieldStyle())
                               .padding()
                           

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var todos: [Todo] = []
+    @StateObject private var todoManager = TodoManager()
     @State private var newString = ""
     
     var body: some View {
@@ -9,7 +9,7 @@ struct ContentView: View {
             VStack {
                 // List of tasks (static UI)
                 List {
-                    ForEach(todos) { todo in
+                    ForEach(todoManager.todos) { todo in
                         HStack {
                             Text(todo.title)
                                 .font(.body)
@@ -43,7 +43,9 @@ struct ContentView: View {
                           
                           // Add button
                           Button(action: {
-                              // Add action (UI only)
+                              let newTodo = Todo(title: newString)
+                                todoManager.todos.append(newTodo)
+                                newString = ""
                           }) {
                               Image(systemName: "plus.circle.fill")
                                   .font(.title)
